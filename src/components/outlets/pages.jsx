@@ -12,7 +12,7 @@ import suv from "../image/suv.jpg";
 import Moun_Car from "../image/Moun_Car.jpeg";
 import hybrid from "../image/hybrid.webp";
 import roma from "../image/Roma.jpg";
-import car from "../image/Car.avif";
+import car from "../image/car.avif";
 import X5 from "../image/X5.jpg";
 import electric from "../image/electric.png";
 
