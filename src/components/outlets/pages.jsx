@@ -30,376 +30,6 @@ import kia from "../image/kia.jpg";
 import PostAdForm from "../modals/post advesitment";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-// export function Page1({ ads }) {
-//   const Navigate = useNavigate();
-
-//   const [keyword, setKeyword] = useState("");
-//   const [category, setCategory] = useState("");
-//   const [cityArea, setCityArea] = useState("");
-//   const [searchResults, setSearchResults] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-
-//   // -------------- Debounce Search (Live Search) ---------------
-//   useEffect(() => {
-//     const delay = setTimeout(() => {
-//       if (keyword || category || cityArea) handleSearch();
-//     }, 400);
-//     return () => clearTimeout(delay);
-//   }, [keyword, category, cityArea]);
-
-//   // const handleSearch = async () => {
-//   //   try {
-//   //     const response = await axios.get(
-//   //       "http://localhost:5000/api/v1/task/search",
-//   //       {
-//   //         params: {
-//   //           keyword,
-//   //           category,
-//   //           cityArea,
-//   //         },
-//   //       }
-//   //     );
-//   //     setSearchResults(response.data.found || []);
-//   //   } catch (error) {
-//   //     console.error("Search Failed", error);
-//   //   }
-//   // };
-
-//   // ----------------------- Search Function ---------------------
-//   const handleSearch = async () => {
-//     try {
-//       setLoading(true);
-//       setError(null);
-
-//       const res = await axios.get("http://localhost:5000/api/v1/task/search", {
-//         params: { keyword, category, cityArea },
-//       });
-
-//       setSearchResults(res.data.found || []);
-//     } catch (err) {
-//       setError("Search failed. Please try again.");
-//       console.error(err);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <div className="box-1">
-//         <Carousel>
-//           <Carousel.Item>
-//             <img className="img" src={kia} alt="" />
-//             <Carousel.Caption className="caption">
-//               <h1>Shift Into Gear:</h1>
-//               <h2>Your Destination for Car Excellence</h2>
-//               <p>Drive Your Dream: Find Your Perfect Car Today</p>
-//               <div className="main-btn">
-//                 <div className="btn-1">
-//                   <Button
-//                     variant="success"
-//                     style={{ padding: "10px 30px 10px 30px" }}
-//                   >
-//                     Search a Car
-//                   </Button>
-//                 </div>
-//                 <div className="btn-1">
-//                   <Button
-//                     variant="primary"
-//                     style={{ padding: "10px 30px 10px 30px" }}
-//                   >
-//                     Post Advertisment
-//                   </Button>
-//                 </div>
-//               </div>
-//             </Carousel.Caption>
-//           </Carousel.Item>
-//           <Carousel.Item>
-//             <img src={slider} alt="" className="img" />
-//             <Carousel.Caption className="caption">
-//               <h1>Shift Into Gear:</h1>
-//               <h2>Your Destination for Car Excellence</h2>
-//               <p>Drive Your Dream: Find Your Perfect Car Today</p>
-//               <div className="main-btn">
-//                 <div className="btn-1">
-//                   <Button
-//                     variant="success"
-//                     style={{ padding: "10px 30px 10px 30px" }}
-//                   >
-//                     Search a Car
-//                   </Button>
-//                 </div>
-//                 <div className="btn-1">
-//                   <Button
-//                     variant="primary"
-//                     style={{ padding: "10px 30px 10px 30px" }}
-//                   >
-//                     Post Advertisment
-//                   </Button>
-//                 </div>
-//               </div>
-//             </Carousel.Caption>
-//           </Carousel.Item>
-//         </Carousel>
-
-//         {/* Search Bar */}
-{
-  /* <div className="main">
-  <input
-    type="text"
-    className="input"
-    placeholder="Keyword"
-    value={keyword}
-    onChange={(e) => setKeyword(e.target.value)}
-  />
-
-  <select
-    className="form-select"
-    value={category}
-    onChange={(e) => setCategory(e.target.value)}
-  >
-    <option value="">Select Category</option>
-    <option value="Real Estate">Real Estate</option>
-    <option value="Vehicles">Vehicles</option>
-    <option value="Jobs">Jobs</option>
-  </select>
-
-  <select
-    className="form-select"
-    value={cityArea}
-    onChange={(e) => setCityArea(e.target.value)}
-  >
-    <option value="">Select City Area</option>
-    <option value="Downtown">Downtown</option>
-    <option value="Suburbs">Suburbs</option>
-  </select>
-</div>; */
-}
-//       </div>
-
-//       <h1 style={{ color: "green", textAlign: "center", margin: "20px" }}>
-//         Explore by Categories
-//       </h1>
-
-//       <Row className="m-4">
-//         {searchResults.map((ad, index) => (
-//           <Col
-//             key={ad._id || index}
-//             md={6}
-//             className="mb-4 d-flex align-items-stetch"
-//           >
-//             <div
-//               className="card shadow-sm d-flex flex-row w-100"
-//               style={{
-//                 minHeight: "180px",
-//                 borderRadius: "10px",
-//                 overflow: "hidden",
-//               }}
-//             >
-//               <img
-//                 src={ad.image}
-//                 alt="ad"
-//                 style={{
-//                   width: "40%",
-//                   height: "100%",
-//                   objectFit: "cover",
-//                 }}
-//               />
-//               <div className="card-body">
-//                 <h5 className="card-title">{ad.Title || "N/A"}</h5>
-//                 <p className="card-text text-success">Rs {ad.Price || "N/A"}</p>
-//                 <p className="card-text">{ad.cityArea || "Unknown area"}</p>
-//               </div>
-//             </div>
-//           </Col>
-//         ))}
-//       </Row>
-
-//       <div className="cards">
-//         <Row className="d-flex">
-//           <Col className="Col-3">
-//             <div className="box" onClick={() => Navigate("./Moredetails")}>
-//               <img className="image" src={sedan} alt="" />
-//               <div className="text">
-//                 <h5>Sedan</h5>
-//                 <p style={{ color: "green" }}>14 Cars</p>
-//               </div>
-//             </div>
-//           </Col>
-//           <Col className="Col-3">
-//             <div className="box" onClick={() => Navigate("./Moredetails2")}>
-//               <img className="image" src={X5} alt="" />
-//               <div className="text">
-//                 <h5>BMW</h5>
-//                 <p style={{ color: "green" }}>11 Cars</p>
-//               </div>
-//             </div>
-//           </Col>
-
-//           <Col className="Col-3">
-//             <div className="box" onClick={() => Navigate("./Moredetails3")}>
-//               <img className="image" src={car} alt="" />
-//               <div className="text">
-//                 <h5>Crossover</h5>
-//                 <p style={{ color: "green" }}>11 Cars</p>
-//               </div>
-//             </div>
-//           </Col>
-//           <Col className="Col-3">
-//             <div className="box" onClick={() => Navigate("./Moredetails4")}>
-//               <img className="image" src={yaris} alt="" />
-//               <div className="text">
-//                 <h5>Yaris Cross</h5>
-//                 <p style={{ color: "green" }}>10 Cars</p>
-//               </div>
-//             </div>
-//           </Col>
-//         </Row>
-//       </div>
-
-//       <Row
-//         className="mt-5"
-//         style={{
-//           marginLeft: "35px",
-//           // marginBottom: "140px",
-//         }}
-//       >
-//         <Col className="Col-3">
-//           <div className="box" onClick={() => Navigate("./Moredetails")}>
-//             <img className="image" src={electric} alt="" />
-//             <div className="text">
-//               <h5>Electric</h5>
-//               <p style={{ color: "green" }}>12 Cars</p>
-//             </div>
-//           </div>
-//         </Col>
-//         <Col className="Col-3">
-//           <div className="box" onClick={() => Navigate("./Moredetails2")}>
-//             <img className="image" src={suv} alt="" />
-//             <div className="text">
-//               <h5>SUV</h5>
-//               <p style={{ color: "green" }}>1 Cars</p>
-//             </div>
-//           </div>
-//         </Col>
-//         <Col className="Col-3">
-//           <div className="box" onClick={() => Navigate("./Moredetails3")}>
-//             <img className="image" src={hybrid} alt="" />
-//             <div className="text">
-//               <h5>Hybrid</h5>
-//               <p style={{ color: "green" }}>12 Cars</p>
-//             </div>
-//           </div>
-//         </Col>
-//         <Col className="Col-3">
-//           <div className="box" onClick={() => Navigate("./Moredetails4")}>
-//             <img className="image" src={roma} alt="" />
-//             <div className="text">
-//               <h5>Ferrari</h5>
-//               <p style={{ color: "green" }}>11 Cars</p>
-//             </div>
-//           </div>
-//         </Col>
-//       </Row>
-//       {/* Lastest posting */}
-//       <Row className="m-4 mt-4">
-//         <h1 style={{ color: "green", textAlign: "center", margin: "35px" }}>
-//           Latest Posting
-//         </h1>
-//         <Col className="Col-6 left">
-//           <div className="container-2">
-//             <img className="lastest-pic" src={car_image} alt="" />
-//             <div className="text">
-//               <h5>Jaguar F-Type Convertible </h5>
-//               <p>
-//                 The Jaguar F-Type Convertible Lorem ipsum, dolor sit amet
-//                 consectetur adipisicing elit. Nesciunt nemo, doloribus eos
-//                 blanditiis error, libero repudiandae nulla quo corporis repellat
-//                 ipsum reprehenderit ad dolorum asperiores dicta assumenda
-//                 ducimus ab exercitationem?
-//               </p>
-//               <Button
-//                 variant="success"
-//                 onClick={() => Navigate("./Moredetails")}
-//               >
-//                 More Details
-//               </Button>
-//             </div>
-//           </div>
-//         </Col>
-//         <Col className="Col-6">
-//           <div className="container-2">
-//             <img className="lastest-pic" src={chery_car} alt="" />
-//             <div className="text">
-//               <h5>Ford Mustang Convertible </h5>
-//               <p>
-//                 The Ford Mustang Convertible Lorem ipsum, dolor sit amet
-//                 consectetur adipisicing elit. Nesciunt nemo, doloribus eos
-//                 blanditiis error, libero repudiandae nulla quo corporis repellat
-//                 ipsum reprehenderit ad dolorum asperiores dicta assumenda
-//                 ducimus ab exercitationem?
-//               </p>
-//               <Button
-//                 variant="success"
-//                 onClick={() => Navigate("./Moredetails2")}
-//               >
-//                 More Details
-//               </Button>
-//             </div>
-//           </div>
-//         </Col>
-//       </Row>
-
-//       <Row className="mt-4 ms-4 me-4 bottom">
-//         <Col className="Col-6 left">
-//           <div className="container-2">
-//             <img className="lastest-pic" src={cooper} alt="" />
-//             <div className="text">
-//               <h5>Mini Cooper Convertible </h5>
-//               <p>
-//                 The Mini Cooper Convertible Lorem ipsum, dolor sit amet
-//                 consectetur adipisicing elit. Nesciunt nemo, doloribus eos
-//                 blanditiis error, libero repudiandae nulla quo corporis repellat
-//                 ipsum reprehenderit ad dolorum asperiores dicta assumenda
-//                 ducimus ab exercitationem?
-//               </p>
-//               <Button
-//                 variant="success"
-//                 onClick={() => Navigate("./Moredetails3")}
-//               >
-//                 More Details
-//               </Button>
-//             </div>
-//           </div>
-//         </Col>
-
-//         <Col className="Col-6">
-//           <div className="container-2">
-//             <img className="lastest-pic" src={lc} alt="" />
-//             <div className="text">
-//               <h5>Lexus LC 500 Convertible </h5>
-//               <p>
-//                 The Lexus LC 500 Convertible Lorem ipsum, dolor sit amet
-//                 consectetur adipisicing elit. Nesciunt nemo, doloribus eos
-//                 blanditiis error, libero repudiandae nulla quo corporis repellat
-//                 ipsum reprehenderit ad dolorum asperiores dicta assumenda
-//                 ducimus ab exercitationem?
-//               </p>
-//               <Button
-//                 variant="success"
-//                 onClick={() => Navigate("./Moredetails4")}
-//               >
-//                 More Details
-//               </Button>
-//             </div>
-//           </div>
-//         </Col>
-//       </Row>
-//     </>
-//   );
-// }
-
 export function Page1() {
   const { user, setUser } = useAuth();
 
@@ -630,7 +260,7 @@ export function Page1() {
       <div className="cards mt-4">
         <Row className="d-flex">
           <Col className="Col-3">
-            <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+            <div className="box">
               <img className="image" src={sedan} alt="" />
               <div className="text">
                 <h5>Sedan</h5>
@@ -639,7 +269,7 @@ export function Page1() {
             </div>
           </Col>
           <Col className="Col-3">
-            <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+            <div className="box">
               <img className="image" src={X5} alt="" />
               <div className="text">
                 <h5>BMW</h5>
@@ -649,7 +279,7 @@ export function Page1() {
           </Col>
 
           <Col className="Col-3">
-            <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+            <div className="box">
               <img className="image" src={car} alt="" />
               <div className="text">
                 <h5>Crossover</h5>
@@ -658,7 +288,7 @@ export function Page1() {
             </div>
           </Col>
           <Col className="Col-3">
-            <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+            <div className="box">
               <img className="image" src={yaris} alt="" />
               <div className="text">
                 <h5>Yaris Cross</h5>
@@ -676,7 +306,7 @@ export function Page1() {
         }}
       >
         <Col className="Col-3">
-          <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+          <div className="box">
             <img className="image" src={electric} alt="" />
             <div className="text">
               <h5>Electric</h5>
@@ -685,7 +315,7 @@ export function Page1() {
           </div>
         </Col>
         <Col className="Col-3">
-          <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+          <div className="box">
             <img className="image" src={suv} alt="" />
             <div className="text">
               <h5>SUV</h5>
@@ -694,7 +324,7 @@ export function Page1() {
           </div>
         </Col>
         <Col className="Col-3">
-          <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+          <div className="box">
             <img className="image" src={hybrid} alt="" />
             <div className="text">
               <h5>Hybrid</h5>
@@ -703,7 +333,7 @@ export function Page1() {
           </div>
         </Col>
         <Col className="Col-3">
-          <div className="box" onClick={() => Navigate(`/car/${car._id}`)}>
+          <div className="box">
             <img className="image" src={roma} alt="" />
             <div className="text">
               <h5>Ferrari</h5>
