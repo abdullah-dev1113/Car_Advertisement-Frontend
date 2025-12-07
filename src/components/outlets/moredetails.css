@@ -1,0 +1,43 @@
+.car-ad-container {
+    width: 100%;
+    /* margin: auto; */
+    padding: 20px;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+  
+  .car-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .car-image {
+    width: 120px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .car-description, .features, .advertisement-summary {
+    margin-top: 20px;
+  }
+  
+  .features ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .features li {
+    margin: 5px 0;
+  }
+  
+  .advertisement-summary {
+    background: #e6f7e6;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .car-ad-1{
+    width: 70%;
+  }
