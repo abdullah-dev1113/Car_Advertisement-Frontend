@@ -58,8 +58,11 @@ export function Page1() {
 
   const fetchAllAds = async () => {
     try {
+      //http://localhost:5000/api/v1/task
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/v1/task");
+      const res = await axios.get(
+        "https://car-advertisement-backend.onrender.com/api/v1/task"
+      );
       const sortedAds = res.data.found.sort(
         (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
       );
@@ -91,10 +94,14 @@ export function Page1() {
     try {
       setLoading(true);
       setError(null);
+      //http://localhost:5000/api/v1/task/search
 
-      const res = await axios.get("http://localhost:5000/api/v1/task/search", {
-        params: { keyword, category: categoryFilter, cityArea },
-      });
+      const res = await axios.get(
+        "https://car-advertisement-backend.onrender.com/api/v1/task/search",
+        {
+          params: { keyword, category: categoryFilter, cityArea },
+        }
+      );
 
       const sortedResults = (res.data.found || [])
         .filter((ad) => ad.createdOn)

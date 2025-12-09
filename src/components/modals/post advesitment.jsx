@@ -377,8 +377,13 @@ function PostAdForm({ onNewAd }) {
     const fetchData = async () => {
       try {
         const [statusRes, priorityRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/v1/status"),
-          axios.get("http://localhost:5000/api/v1/priority"),
+          axios.get(
+            "https://car-advertisement-backend.onrender.com/api/v1/status"
+          ), //http://localhost:5000/api/v1/status
+
+          axios.get(
+            "https://car-advertisement-backend.onrender.com/api/v1/priority"
+          ), //http://localhost:5000/api/v1/priority
         ]);
 
         setStatusList(statusRes.data.Found);
@@ -427,12 +432,17 @@ function PostAdForm({ onNewAd }) {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.post("http://localhost:5000/api/v1/task/create", postData, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-AUTH-HEADER": `Bearer ${token}`,
-        },
-      });
+      //http://localhost:5000/api/v1/task/create
+      await axios.post(
+        "https://car-advertisement-backend.onrender.com/api/v1/task/create",
+        postData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-AUTH-HEADER": `Bearer ${token}`,
+          },
+        }
+      );
 
       toast.success("Post created!", {
         position: "top-right",

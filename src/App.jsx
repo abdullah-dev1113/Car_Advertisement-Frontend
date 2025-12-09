@@ -23,8 +23,9 @@ function App() {
 
   useEffect(() => {
     // Backend se data fetch karo
+    //http://localhost:5000/api/v1/roles
     axios
-      .get("http://localhost:5000/api/v1/roles")
+      .get("https://car-advertisement-backend.onrender.com/api/v1/roles")
       .then((response) => {
         console.log(response.data.getAll);
         setAds(response.data.getAll); // jo data backend se aaya usay state me set karo

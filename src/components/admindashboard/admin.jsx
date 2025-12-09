@@ -75,8 +75,11 @@ export default function Dashboard({ adData }) {
   }, []);
 
   const fetchAds = async () => {
+    //http://localhost:5000/api/v1/task
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/task");
+      const res = await axios.get(
+        "https://car-advertisement-backend.onrender.com/api/v1/task"
+      );
       const data = res.data.found || [];
       console.log("fetched ads:", data);
 
@@ -201,8 +204,9 @@ export default function Dashboard({ adData }) {
     console.log("sending to backend", finalUserData);
 
     try {
+      //http://localhost:5000/api/v1/user/update/
       const response = await fetch(
-        `http://localhost:5000/api/v1/user/update/${userForm._id}`,
+        `https://car-advertisement-backend.onrender.com/api/v1/user/update/${userForm._id}`,
         {
           method: "PUT",
           headers: {
@@ -267,11 +271,15 @@ export default function Dashboard({ adData }) {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const token = localStorage.getItem("token");
-        await axios.delete(`http://localhost:5000/api/v1/task/delete/${id}`, {
-          headers: {
-            "X-AUTH-HEADER": ` Bearer ${token}`,
-          },
-        });
+        //http://localhost:5000/api/v1/task/delete/
+        await axios.delete(
+          `https://car-advertisement-backend.onrender.com/api/v1/task/delete/${id}`,
+          {
+            headers: {
+              "X-AUTH-HEADER": ` Bearer ${token}`,
+            },
+          }
+        );
         setAds((prevAds) => prevAds.filter((ad) => ad._id !== id));
         Swal.fire("Deleted!", "Your ad has been deleted.", "success");
       }
@@ -313,7 +321,8 @@ export default function Dashboard({ adData }) {
       if (selectedAd) {
         // ✅ Update ad
         const res = await axios.put(
-          `http://localhost:5000/api/v1/task/update/${selectedAd._id}`,
+          //http://localhost:5000/api/v1/task/update/
+          `https://car-advertisement-backend.onrender.com/api/v1/task/update/${selectedAd._id}`,
           adData,
           {
             headers: {
@@ -330,7 +339,8 @@ export default function Dashboard({ adData }) {
       } else {
         // ✅ Create new ad
         const res = await axios.post(
-          "http://localhost:5000/api/v1/task/create",
+          //http://localhost:5000/api/v1/task/create
+          "https://car-advertisement-backend.onrender.com/api/v1/task/create",
           adData,
           {
             headers: {

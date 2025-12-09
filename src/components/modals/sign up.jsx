@@ -555,7 +555,10 @@ function Signup({ show, onClose }) {
 
     try {
       // 🔹 1 — User create karo
-      await axios.post("http://localhost:5000/api/v1/user/create", newUser);
+      await axios.post(
+        "https://car-advertisement-backend.onrender.com/api/v1/user/create",
+        newUser
+      ); // http://localhost:5000/api/v1/user/create
 
       toast.success("Account created! Please verify OTP.", {
         theme: "colored",
@@ -565,7 +568,10 @@ function Signup({ show, onClose }) {
       localStorage.setItem("tempPassword", password);
 
       // 🔹 3 — OTP send karo
-      await axios.post("http://localhost:5000/api/v1/otp/send", { email });
+      await axios.post(
+        "https://car-advertisement-backend.onrender.com/api/v1/otp/send",
+        { email }
+      ); //http://localhost:5000/api/v1/otp/send
 
       onClose();
 

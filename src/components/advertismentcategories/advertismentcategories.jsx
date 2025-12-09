@@ -9,8 +9,12 @@ export function Advertisement() {
 
   useEffect(() => {
     const fetchCars = async () => {
+      //http://localhost:5000/api/v1/task
+
       try {
-        const res = await fetch("http://localhost:5000/api/v1/task");
+        const res = await fetch(
+          "https://car-advertisement-backend.onrender.com/api/v1/task"
+        );
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         setCars(data.found || []);

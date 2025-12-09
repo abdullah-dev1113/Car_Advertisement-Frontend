@@ -247,11 +247,15 @@ export default function OTPVerification() {
 
     try {
       const code = otp.join("");
+      //http://localhost:5000/api/v1/otp/verify
 
-      const res = await axios.post("http://localhost:5000/api/v1/otp/verify", {
-        email,
-        otp: code,
-      });
+      const res = await axios.post(
+        "https://car-advertisement-backend.onrender.com/api/v1/otp/verify",
+        {
+          email,
+          otp: code,
+        }
+      );
 
       if (res.data.success) {
         const verifiedUser = res.data.user;
@@ -275,7 +279,12 @@ export default function OTPVerification() {
     setCooldown(RESEND_COOLDOWN);
 
     try {
-      await axios.post("http://localhost:5000/api/v1/otp/send", { email });
+      //http://localhost:5000/api/v1/otp/send
+
+      await axios.post(
+        "https://car-advertisement-backend.onrender.com/api/v1/otp/send",
+        { email }
+      );
       setInfo("OTP resent successfully!");
     } catch (err) {
       setError("Failed to resend OTP");
