@@ -204,7 +204,7 @@ export default function Dashboard({ adData }) {
     console.log("sending to backend", finalUserData);
 
     try {
-      //http://localhost:5000/api/v1/user/update/
+      //http://localhost:5000/api/v1/user/update/${userForm._id}
       const response = await fetch(
         `https://car-advertisement-backend.onrender.com/api/v1/user/update/${userForm._id}`,
         {
@@ -271,7 +271,7 @@ export default function Dashboard({ adData }) {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const token = localStorage.getItem("token");
-        //http://localhost:5000/api/v1/task/delete/
+        //http://localhost:5000/api/v1/task/delete/${id}
         await axios.delete(
           `https://car-advertisement-backend.onrender.com/api/v1/task/delete/${id}`,
           {
@@ -321,7 +321,7 @@ export default function Dashboard({ adData }) {
       if (selectedAd) {
         // ✅ Update ad
         const res = await axios.put(
-          //http://localhost:5000/api/v1/task/update/
+          //http://localhost:5000/api/v1/task/update/${selectedAd._id}
           `https://car-advertisement-backend.onrender.com/api/v1/task/update/${selectedAd._id}`,
           adData,
           {

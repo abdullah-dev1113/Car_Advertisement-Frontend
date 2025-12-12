@@ -10,9 +10,9 @@ export default function Moredetails() {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        //http://localhost:5000/api/v1/task
+        //http://localhost:5000/api/v1/task/${id}
         const res = await fetch(
-          `https://car-advertisement-backend.onrender.com/${id}`
+          `https://car-advertisement-backend.onrender.com/api/v1/task/${id}`
         );
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
